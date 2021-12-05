@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form
+      #myForm="ngForm"
+      (ngSubmit)="onSubmitItem(myForm)"
+      data-cy="shoppingListComponent"
+    >
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            autocomplete="off"
+            data-cy="ingredientName"
+            ngModel
+            #name="ngModel"
+            [ngClass]="{
+              'is-invalid': name.invalid && (name.dirty || name.touched)
+            }"
+            required
+          />
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="invalid-feedback mt-2"
+          >
+            <div *ngIf="name.errors?.['required']">Name is required.</div>
+          </div>
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label for="amount">Amount:</label>
+          <input
+            type="number"
+            class="form-control"
+            name="amount"
+            data-cy="ingredientAmount"
+            ngModel
+            #amount="ngModel"
+            [ngClass]="{
+              'is-invalid': amount.invalid && (amount.dirty || amount.touched)
+            }"
+            required
+            pattern="^[1-9]+[0-9]*$"
+          />
+          <div
+            *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+            class="invalid-feedback mt-2"
+          >
+            <div *ngIf="amount.errors?.['required']">Amount is required.</div>
+            <div *ngIf="amount.errors?.['pattern']">Amount is wrong.</div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-2">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="myForm.invalid"
+          >
+            {{ editMode ? "Update" : "Add" }}
+          </button>
+          <button
+            class="btn btn-danger m-1"
+            type="button"
+            (click)="onDelete()"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button
+            class="btn btn-primary m-1"
+            type="button"
+            [disabled]="myForm.invalid"
+            (click)="onClear()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

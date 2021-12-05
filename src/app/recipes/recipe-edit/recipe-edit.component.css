@@ -1,0 +1,9 @@
+.alert {
+  padding: 5px;
+  margin: 0;
+}
+
+.error {
+  border: 2px solid red;
+  box-shadow: 2px 2px 2px red;
+}

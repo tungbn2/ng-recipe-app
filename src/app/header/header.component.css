@@ -1,0 +1,10 @@
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+li > a {
+  font-size: 1.25rem;
+}
+.active {
+  font-weight: 600;
+}

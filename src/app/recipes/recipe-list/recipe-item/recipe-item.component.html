@@ -1,0 +1,9 @@
+<div class="row text-dark item" [routerLink]="[id]" routerLinkActive="active">
+  <div class="col-sm-8">
+    <h5>{{ recipe.name }}</h5>
+    <p>{{ recipe.description }}</p>
+  </div>
+  <div class="col-sm-4">
+    <img [src]="recipe.imgPath" class="card-img-top rounded-4" alt="..." />
+  </div>
+</div>
